@@ -12,7 +12,7 @@ export default class Card extends React.Component {
     //     <HeaderBar />
         <View style={{ borderColor: 'gray', borderWidth: 0.5 }}>
           <Image style={{ height: 200 }}
-            source={pic} />
+            source={this.props.img} />
           <Text style={{ fontSize: 18, fontWeight: 'bold', padding: 10 }}>
             {this.props.title}
           </Text>
