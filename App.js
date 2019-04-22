@@ -7,6 +7,7 @@ import DetailsScreen from './screen/detail'
 import Member1Screen from './screen/member1';
 import Member2Screen from './screen/member2';
 import Member3creen from './screen/member3';
+import MainMenuScreen from './screen/mainmenu';
 
 const AppNavigator = createStackNavigator(
   {
@@ -14,10 +15,11 @@ const AppNavigator = createStackNavigator(
     Details: DetailsScreen,
     Member1: Member1Screen,
     Member2: Member2Screen,
-    Member3: Member3creen
+    Member3: Member3creen,
+    Main: MainMenuScreen
   }, 
   {
-    initialRouteName: "Home"
+    initialRouteName: "Main"
   }
 );
 
