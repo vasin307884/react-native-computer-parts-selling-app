@@ -15,7 +15,7 @@ const AppNavigator = createStackNavigator(
     Member1: Member1Screen,
     Member2: Member2Screen,
     Member3: Member3creen
-  },
+  }, 
   {
     initialRouteName: "Home"
   }
