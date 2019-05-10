@@ -36,6 +36,9 @@ constructor(props){
 
     return (
       <ScrollView>
+        <Button style={{marginTop:20 }} title="View CPU Product" onPress={()=>this.props.navigation.navigate('Usercpulist')}></Button>
+        <Button style={{marginTop:20 }} title="View Graphic card Product" onPress={()=>this.props.navigation.navigate('Usergpulist')}></Button>
+        <Button style={{marginTop:20 }} title="View Ram Product" onPress={()=>this.props.navigation.navigate('Userramlist')}></Button>
         <HeaderBar headtitle='! News !' />
         <WebView
         source={{uri: 'https://www.sanook.com/hitech/tag/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C/'}}
@@ -57,9 +60,7 @@ constructor(props){
         <Button style={{marginTop:20 }} title="Add CPU" onPress={()=>this.props.navigation.navigate('Add')}></Button>
         <Button style={{marginTop:20 }} title="Add VGA" onPress={()=>this.props.navigation.navigate('Addg')}></Button>
         <Button style={{marginTop:20 }} title="Add Ram" onPress={()=>this.props.navigation.navigate('Add')}></Button>*/}
-        <Button style={{marginTop:20 }} title="View CPU Product" onPress={()=>this.props.navigation.navigate('Usercpulist')}></Button>
-        <Button style={{marginTop:20 }} title="View Graphic card Product" onPress={()=>this.props.navigation.navigate('Usergpulist')}></Button>
-        <Button style={{marginTop:20 }} title="View Ram Product" onPress={()=>this.props.navigation.navigate('Userramlist')}></Button>
+    
         {/* <TouchableOpacity
           onPress={() => this.props.navigation.navigate('Details')}>
           <Card img={pic1} title='ไข่เจียวฟู' />

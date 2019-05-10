@@ -9,17 +9,21 @@ import QRcodeScreen from './screen/qrcode';
 import LoginScreen from './screen/loginform';
 import Addproduct from './screen/addproduct';
 import firebase from 'firebase'
-import ProductList from './screen/cpulist';
+import ProductList from './screen/cpulistforseller';
 import Addgpu from './screen/addgpu';
-import GPUList from './screen/gpulist';
+import GPUList from './screen/gpulistforseller';
 import updatecpu from './screen/updatecpu';
 import updategpu from './screen/updategpu';
 import MainMenuUserScreen from './screen/mainmenuforuser';
 import Addram from './screen/addram';
-import RamList from './screen/ramlist';
+import RamList from './screen/ramlistforseller';
 import updateram from './screen/updateram';
 import UserProductList from './screen/cpulistforuser';
 import ordercpu from './screen/cpuorder';
+import UserGPUList from './screen/gpulistforuser';
+import ordergpu from './screen/gpuorder';
+import UserRAMList from './screen/ramlistforuser';
+import orderram from './screen/ramorder';
 
 const Productupdate = createStackNavigator({
   PList:{screen:ProductList},
@@ -27,6 +31,8 @@ const Productupdate = createStackNavigator({
   RList:{screen:RamList},
   OrderCPU : ordercpu,
   Usercpulist:{screen:UserProductList},
+  Usergpulist:{screen:UserGPUList},
+  Userramlist:{screen:UserRAMList},
   UpdateCPU:{screen:updatecpu},
   UpdateGPU : {screen : updategpu},
   updateRam : {screen : updateram}
@@ -37,7 +43,9 @@ const ProductStackTab = createBottomTabNavigator({
   GList : {screen : Productupdate},
   RList:{screen : Productupdate},
   OrderCPU :{screen : Productupdate},
-  Usercpulist:{screen:UserProductList}
+  Usercpulist:{screen:UserProductList},
+  Usergpulist:{screen:Productupdate},
+  Userramlist:{screen: UserRAMList}
   // Manage : {screen:setting}
  
 })
@@ -55,6 +63,8 @@ const LandingNavigator= createSwitchNavigator({
   GList : {screen : ProductStackTab},
   RList : {screen : ProductStackTab},
   Usercpulist:{screen:UserProductList},
+  Usergpulist:{screen:UserGPUList},
+  Userramlist:{screen:UserRAMList},
   Login : {screen : Loginnavigator},
   initialRouteName: 'LoginForm'
   
@@ -74,10 +84,14 @@ const AppNavigator = createStackNavigator(
     GList : GPUList,
     RList : RamList,
     Usercpulist: UserProductList,
+    Usergpulist:UserGPUList,
+    Userramlist:UserRAMList,
     UpdateCPU: updatecpu,
     UpdateGPU: updategpu,
     UpdateRam : updateram,
-    OrderCPU : ordercpu
+    OrderCPU : ordercpu,
+    OrderGPU: ordergpu,
+    OrderRAM: orderram
   }, 
   {
     initialRouteName: "Login",
