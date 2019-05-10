@@ -5,7 +5,10 @@ import Card from '../components/card'
 import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
 import mydata from '../data/mydata';
 import ListView from '../components/listview';
-import {Icon,Container, Content, Header, Left,Right} from 'native-base';
+import {Container, Content, Header, Left,Right} from 'native-base';
+import Icon1 from 'react-native-vector-icons/Feather';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon3 from 'react-native-vector-icons/Entypo';
 export default class MainMenuUserScreen extends React.Component {
   static navigationOptions =
    {
@@ -36,9 +39,35 @@ constructor(props){
 
     return (
       <ScrollView>
-        <Button style={{marginTop:20 }} title="View CPU Product" onPress={()=>this.props.navigation.navigate('Usercpulist')}></Button>
-        <Button style={{marginTop:20 }} title="View Graphic card Product" onPress={()=>this.props.navigation.navigate('Usergpulist')}></Button>
-        <Button style={{marginTop:20 }} title="View Ram Product" onPress={()=>this.props.navigation.navigate('Userramlist')}></Button>
+        <View style={{backgroundColor: "#00b5ec"}}>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:5}}>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon1 name="cpu" size={25} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Usercpulist')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          View CPU Product
+        </Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon2 name="gpu" size={30} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Usergpulist')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          View GPU Product
+        </Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon3 name="ruler" size={25} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Userramlist')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          View RAM Product
+        </Text>
+        </TouchableOpacity>
+        </View>
+        </View>
+
+        </View>
         <HeaderBar headtitle='! News !' />
         <WebView
         source={{uri: 'https://www.sanook.com/hitech/tag/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C/'}}

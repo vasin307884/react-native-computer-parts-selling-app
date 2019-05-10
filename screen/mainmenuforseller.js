@@ -2,12 +2,15 @@ import React from 'react';
 import { ScrollView, Image, StyleSheet, Text, View,Drawer,Button,WebView } from 'react-native';
 import HeaderBar from '../components/header';
 import Card from '../components/card'
-import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
+import { TouchableOpacity, FlatList, TouchableHighlight } from 'react-native-gesture-handler';
 import mydata from '../data/mydata';
 import ListView from '../components/listview';
 import MenuButton from '../components/menubutton'
 import { DrawerNavigator } from 'react-navigation';
-import {Icon,Container, Content, Header, Left,Right} from 'native-base';
+import Icon from 'react-native-vector-icons/AntDesign';
+import Icon1 from 'react-native-vector-icons/Feather';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon3 from 'react-native-vector-icons/Entypo';
 export default class MainMenuScreen extends React.Component {
   static navigationOptions = {
     title: 'Main menu'
@@ -36,12 +39,64 @@ constructor(props){
 
     return (
       <ScrollView>
-        <Button style={{marginTop:20 }} title="Add CPU" onPress={()=>this.props.navigation.navigate('Add')}></Button>
-        <Button style={{marginTop:20 }} title="Add GPU" onPress={()=>this.props.navigation.navigate('Addg')}></Button>
-        <Button style={{marginTop:20 }} title="Add Ram" onPress={()=>this.props.navigation.navigate('Addr')}></Button>
-        <Button style={{marginTop:20 }} title="View CPU Product" onPress={()=>this.props.navigation.navigate('PList')}></Button>
-        <Button style={{marginTop:20 }} title="View Graphic card Product" onPress={()=>this.props.navigation.navigate('GList')}></Button>
-        <Button style={{marginTop:20 }} title="View Ram Product" onPress={()=>this.props.navigation.navigate('RList')}></Button>
+        <View style={{backgroundColor: "#00b5ec"}}>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:5}}>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon name="pluscircle" size={20} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Add')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          Add CPU
+        </Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon name="pluscircle" size={20} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Addg')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          Add GPU
+        </Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon name="pluscircle" size={20} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Addr')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          Add RAM
+        </Text>
+        </TouchableOpacity>
+        </View>
+        </View>
+
+
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:15}}>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon1 name="cpu" size={25} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('PList')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+         Edit/Delete CPU 
+        </Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon2 name="gpu" size={30} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('GList')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          Edit/Delete GPU 
+        </Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon3 name="ruler" size={25} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('RList')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+         Edit/Delete RAM 
+        </Text>
+        </TouchableOpacity>
+        </View>
+        </View>
+
+
+        </View>
         <HeaderBar headtitle='! News !' />
         <WebView
         source={{uri: 'https://www.sanook.com/hitech/tag/%E0%B8%82%E0%B9%88%E0%B8%B2%E0%B8%A7%E0%B8%84%E0%B8%AD%E0%B8%A1%E0%B8%9E%E0%B8%B4%E0%B8%A7%E0%B9%80%E0%B8%95%E0%B8%AD%E0%B8%A3%E0%B9%8C/'}}
@@ -69,9 +124,9 @@ constructor(props){
         <Card img={pic3} />
         <Card />
         <Card /> */}
+        
       </ScrollView>
     );
   }
 }
-
 
