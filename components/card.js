@@ -1,23 +1,25 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 // import HeaderBar from './components/header';
-
+import Icon from 'react-native-vector-icons/AntDesign';
 
 export default class Card extends React.Component {
   render() {
-    let pic = { uri: 'https://i.ytimg.com/vi/_SXdMYghPLw/hqdefault.jpg' }
 
     return (
-    //   <View>
-    //     <HeaderBar />
-        <View style={{ borderColor: 'gray', borderWidth: 0.5 }}>
-          <Image style={{ height: 200 }}
-            source={this.props.img} />
-          <Text style={{ fontSize: 18, fontWeight: 'bold', padding: 10 }}>
-            {this.props.title}
-          </Text>
-        </View>
-    //   </View>
+    <View style = {{flex:1, flexDirection:'row',borderWidth: 0.5,borderColor: 'black',marginBottom:5}}>
+            
+    <View style={{marginLeft:5,flex:1,borderWidth: 1,borderColor: 'gray'}}>
+    <Image style={{height:100,width:125}} source = {this.props.img}/>
+    </View>
+    <View style = {{flex:2}}>
+    <Text style = {{fontSize : 18 , fontWeight : 'bold'}}>Product Name: {this.props.name} </Text>
+    <Text style={{color:'red',fontSize : 18}}>Price : {this.props.price}</Text>
+    <Text style={{fontSize:14}}>Description : {this.props.desc}</Text>
+    <Icon name="shoppingcart" size={40} color='black'/>
+    </View> 
+ 
+ </View>
     );
   }
 }
