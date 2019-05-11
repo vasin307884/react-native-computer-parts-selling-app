@@ -97,7 +97,10 @@ static navigationOptions = {
         {this.renderButton()}
 
         <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Main')}>
-            <Text style={{fontWeight:'bold'}}>For Seller</Text>
+            <Text style={{fontWeight:'bold'}}>Seller</Text>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('MainUser')}>
+            <Text style={{fontWeight:'bold'}}>Guest</Text>
         </TouchableHighlight>
         {/*}
         <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('MainUser')}>

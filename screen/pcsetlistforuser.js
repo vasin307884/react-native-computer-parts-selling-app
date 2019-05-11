@@ -5,9 +5,9 @@ import firebase from 'firebase'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {style} from '../style/homescreen'
 import ListView from '../components/listview';
-export default class ProductList extends React.Component {
+export default class UserPCSETList extends React.Component {
   static navigationOptions = {
-    title: 'Lists of CPU ',
+    title: 'PC set',
 
   }
 
@@ -17,12 +17,16 @@ export default class ProductList extends React.Component {
   }
   
   componentDidMount() {
-    firebase.database().ref('productlist').on('value', (snapshot) => {
+    firebase.database().ref('PC_SET_list').on('value', (snapshot) => {
       var defaultdata = {
-        productname : '',
-        productprice : '',
-        desc : '',
-        review:''
+        pcsetname : '',
+        cpu : '',
+        mainboard : '',
+        gpu:'',
+        ram:'',
+        harddisk:'',
+        powersupply:'',
+        price:''
         
       }
       let data = snapshot.val()
@@ -38,20 +42,10 @@ export default class ProductList extends React.Component {
     
     )
 }
-  deleteuser(name) {
-    var ref = firebase.database().ref('productlist')
-    ref.orderByChild('productname').equalTo(name).on('child_added', function (snapshot) { 
-       snapshot.ref.remove().then(function(){
-         alert(`${snapshot.key} has been deleted`)
-       }).catch(function(error){
-         console.log(error)
-       })
-    })
-    
-  }
   
   callupdate(item) { 
-  this.props.navigation.navigate('UpdateCPU', { name: item.productname, price: item.productprice,review: item.review, desc: item.desc,itemx:item })
+  this.props.navigation.navigate('OrderPCSET', { pcsetname: item.pcsetname, cpu: item.cpu,mainboard:item.mainboard,gpu:item.gpu,ram:item.ram,harddisk
+    :item.harddisk,powersupply:item.powersupply,price:item.price,itemx:item })
 }
   
 
@@ -64,12 +58,16 @@ export default class ProductList extends React.Component {
         data={this.state.data}
           renderItem={({ item }) => 
           <TouchableOpacity 
-          onLongPress={() => this.deleteuser(item.productname)}
             onPress={() => this.callupdate(item)}>
-        <Card name={item.productname} 
-        price={item.productprice} 
+        <ListView name={item.pcsetname} 
+        cpu={item.cpu} 
+        mainboard={item.mainboard} 
+        gpu={item.gpu} 
+        ram={item.ram}
+        harddisk={item.harddisk}
+        powersupply={item.powersupply}
+        price={item.price}    
         img={{ uri: item.img }} 
-        desc={item.desc}
             /></TouchableOpacity>
           }
         />

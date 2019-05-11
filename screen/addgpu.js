@@ -14,8 +14,8 @@ export default class Addgpu extends React.Component {
         let myOrder = {
             gpuname:this.state.gname,
             gpuprice:this.state.gprice,
-            desc:this.state.gdesc
-
+            desc:this.state.gdesc,
+            review:this.state.review
         }
     
         alert(`You've added ${this.state.gname}! Price : ${this.state.gprice}`);
@@ -51,7 +51,9 @@ export default class Addgpu extends React.Component {
         <View style={stylex}>
         <TextInput style = {{fontSize:15,padding:20}} placeholder = 'Description' onChangeText = {(desc) => this.setState({gdesc:desc})}></TextInput>
         </View>
-        
+        <View style={stylex}>
+        <TextInput style = {{fontSize:15,padding:20}} placeholder = 'Video Review URL' onChangeText = {(review) => this.setState({review:review})}></TextInput>
+        </View>
         
         
         <View style={{alignItems:'center'}}>

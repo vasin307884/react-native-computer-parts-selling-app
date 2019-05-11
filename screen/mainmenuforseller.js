@@ -96,6 +96,25 @@ constructor(props){
         </View>
 
 
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:15}}>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon3 name="classic-computer" size={20} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Buildpc')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          Build your own pc
+        </Text>
+        </TouchableOpacity>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center'}}>
+        <Icon3 name="classic-computer" size={20} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('PCList')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          Edit/Delete PC Set
+        </Text>
+        </TouchableOpacity>
+        </View>
+        </View>
+
         </View>
         <HeaderBar headtitle='! News !' />
         <WebView

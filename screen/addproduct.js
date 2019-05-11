@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text,View,ScrollView,Button,TextInput,StyleSheet,TouchableHighlight } from 'react-native';
-
-
+import { Text,View,ScrollView,Button,TextInput,StyleSheet,TouchableHighlight,Alert } from 'react-native';
+import {ImagePicker,Permissions} from 'expo';
+import *as firebase from 'firebase';
 export default class Addproduct extends React.Component {
     
     /*constructor(props){
@@ -15,6 +15,7 @@ export default class Addproduct extends React.Component {
             productname:this.state.pname,
             productprice:this.state.pprice,
             desc:this.state.pdesc,
+            review:this.state.review
             
 
         }
@@ -33,7 +34,26 @@ export default class Addproduct extends React.Component {
           
          
       }
-
+onChooseImage =async()=>{
+  let result = await ImagePicker.launchImageLibraryAsync();
+  if(!result.cancelled){
+    this.uploadImage(result.uri,"Product_image")
+    .then(() =>{
+      Alert.alert("Uploaded successfull");
+    })
+    .catch((error)=>{
+      Alert.alert(error);
+    }
+    );
+  }
+}
+uploadImage = async(uri,imageName) =>{
+  const response = await fetch(uri);
+  const blob = await response.blob();
+  var metadata = { contentType: "image/jpeg" };
+  var ref = firebase.storage().ref().child("images/"+imageName);
+  return ref.put(blob,metadata);
+}
     render(){
         let stylex = {
             borderWidth:1,borderColor:'gray',marginBottom:5
@@ -52,10 +72,15 @@ export default class Addproduct extends React.Component {
         <View style={stylex}>
         <TextInput style = {{fontSize:15,padding:20}} placeholder = 'Description' onChangeText = {(desc) => this.setState({pdesc:desc})}></TextInput>
         </View>
+        <View style={stylex}>
+        <TextInput style = {{fontSize:15,padding:20}} placeholder = 'Video Review URL' onChangeText = {(review) => this.setState({review:review})}></TextInput>
+        </View>
         
         
-        
-        <View style={{alignItems:'center'}}>
+        <View style={{alignItems:'center',marginTop:10}}>
+        <Button title="Upload image.." onPress={this.onChooseImage}></Button>
+        </View>
+        <View style={{alignItems:'center',marginTop:20}}>
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,]} 
         onPress={() => this.submitOrder()}>
           <Text style={{fontSize:15,fontWeight:'bold',textAlign:'center'}}>Add Product</Text>

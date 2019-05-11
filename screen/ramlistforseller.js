@@ -21,7 +21,8 @@ export default class RamList extends React.Component {
       var defaultdata = {
         ramname : '',
         ramprice : '',
-        desc : ''
+        desc : '',
+        review:''
       }
       let data = snapshot.val()
       if(data == null){
@@ -49,7 +50,7 @@ export default class RamList extends React.Component {
   }
   
   callupdate(item) { 
-  this.props.navigation.navigate('UpdateRam', { name: item.ramname, price: item.ramprice, desc: item.desc,itemx:item })
+  this.props.navigation.navigate('UpdateRam', { name: item.ramname, price: item.ramprice, desc: item.desc,itemx:item,review:item.review })
 }
   
 

@@ -66,7 +66,14 @@ constructor(props){
         </TouchableOpacity>
         </View>
         </View>
-
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:15}}>
+        <Icon3 name="classic-computer" size={20} color='black'  />
+        <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Userpcsetlist')}>
+        <Text style={{fontSize:20,fontWeight:'bold',textAlign:'center',color:'white'}}>
+          PC set
+        </Text>
+        </TouchableOpacity>
+        </View>
         </View>
         <HeaderBar headtitle='! News !' />
         <WebView

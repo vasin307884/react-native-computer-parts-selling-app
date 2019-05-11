@@ -22,6 +22,7 @@ export default class UserRAMList extends React.Component {
         ramname : '',
         ramprice : '',
         desc : '',
+        review:''
         
       }
       let data = snapshot.val()
@@ -37,21 +38,10 @@ export default class UserRAMList extends React.Component {
     
     )
 }
-  deleteuser(name) {
-    var ref = firebase.database().ref('ramlist')
-    ref.orderByChild('ramname').equalTo(name).on('child_added', function (snapshot) { 
-       snapshot.ref.remove().then(function(){
-         alert(`${snapshot.key} has been deleted`)
-       }).catch(function(error){
-         console.log(error)
-       })
-    })
-    
-  }
   
 
 callupdate(item) { 
-    this.props.navigation.navigate('OrderRAM', { name: item.ramname, price: item.ramprice, desc: item.desc,itemx:item })
+    this.props.navigation.navigate('OrderRAM', { name: item.ramname, price: item.ramprice, desc: item.desc,itemx:item,review:item.review })
   }
 
   render() {

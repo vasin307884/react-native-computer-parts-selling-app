@@ -9,9 +9,9 @@ export default class updategpu extends React.Component {
     }
     constructor(props) {
         super(props)
-        const { name, price, desc} = this.props.navigation.state.params
+        const { name, price, desc,review} = this.props.navigation.state.params
         const item = this.props.navigation.state.params.itemx
-        this.state = { gname: name, gprice: price, gdesc: desc , item : item }
+        this.state = { gname: name, gprice: price, gdesc: desc , item : item ,review:review}
         
     }
 
@@ -19,7 +19,8 @@ export default class updategpu extends React.Component {
         var newData = {
             gpuname : this.state.gname,
             gpuprice : this.state.gprice,
-            desc : this.state.gdesc
+            desc : this.state.gdesc,
+            review:this.state.review
           }
         firebase.database().ref('gpulist').orderByChild('gpuname').equalTo(item.gpuname).once('child_added',
             (snapshot) => {
@@ -52,7 +53,9 @@ export default class updategpu extends React.Component {
         <View style={stylex}>
         <TextInput style = {{fontSize:15,padding:20}} value ={this.state.gdesc} onChangeText = {(desc) => this.setState({gdesc:desc})}></TextInput>
         </View>
-        
+        <View style={stylex}>
+        <TextInput style = {{fontSize:15,padding:20}} value ={this.state.review} onChangeText = {(review) => this.setState({review:review})}></TextInput>
+        </View>
         
         <View style={{alignItems:'center'}}>
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,]} 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,View,ScrollView,Button,TextInput,TouchableHighlight,StyleSheet } from 'react-native';
+import { Text,View,ScrollView,Button,TextInput,TouchableHighlight,StyleSheet ,WebView,Linking} from 'react-native';
 import firebase from 'firebase';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -10,8 +10,8 @@ export default class ordercpu extends React.Component {
     }
     constructor(props) {
         super(props)
-        const { name, price} = this.props.navigation.state.params
-        this.state = { pname: name, pprice: price}
+        const { name, price,review} = this.props.navigation.state.params
+        this.state = { pname: name, pprice: price,review:review}
         
     }
     submitOrder = async () => {
@@ -70,6 +70,9 @@ export default class ordercpu extends React.Component {
           <Text style={{fontSize:15,fontWeight:'bold',textAlign:'center'}}>Order this product</Text>
         </TouchableHighlight> 
         </View>
+        </View>
+        <View>
+        <Button title='Watch review here' onPress={() => {Linking.openURL(this.state.review)}} />
         </View>
         </ScrollView>
         )

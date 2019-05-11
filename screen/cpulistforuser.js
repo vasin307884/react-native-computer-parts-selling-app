@@ -37,21 +37,10 @@ export default class UserProductList extends React.Component {
     
     )
 }
-  deleteuser(name) {
-    var ref = firebase.database().ref('productlist')
-    ref.orderByChild('productname').equalTo(name).on('child_added', function (snapshot) { 
-       snapshot.ref.remove().then(function(){
-         alert(`${snapshot.key} has been deleted`)
-       }).catch(function(error){
-         console.log(error)
-       })
-    })
-    
-  }
   
 
 callupdate(item) { 
-    this.props.navigation.navigate('OrderCPU', { name: item.productname, price: item.productprice, desc: item.desc,itemx:item })
+    this.props.navigation.navigate('OrderCPU', { name: item.productname, price: item.productprice, desc: item.desc,itemx:item,review: item.review })
   }
 
   render() {

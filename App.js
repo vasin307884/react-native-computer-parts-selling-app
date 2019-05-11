@@ -24,6 +24,11 @@ import UserGPUList from './screen/gpulistforuser';
 import ordergpu from './screen/gpuorder';
 import UserRAMList from './screen/ramlistforuser';
 import orderram from './screen/ramorder';
+import BuildingPC from './screen/buildpc';
+import PCsetlist from './screen/pcsetlistforseller';
+import updatepcset from './screen/updatepcset';
+import UserPCSETList from './screen/pcsetlistforuser';
+import orderpcset from './screen/pcsetorder';
 
 const Productupdate = createStackNavigator({
   PList:{screen:ProductList},
@@ -83,15 +88,20 @@ const AppNavigator = createStackNavigator(
     PList: ProductList,
     GList : GPUList,
     RList : RamList,
+    PCList : PCsetlist,
     Usercpulist: UserProductList,
     Usergpulist:UserGPUList,
     Userramlist:UserRAMList,
+    Userpcsetlist:UserPCSETList,
     UpdateCPU: updatecpu,
     UpdateGPU: updategpu,
     UpdateRam : updateram,
+    UpdatePCSET : updatepcset,
     OrderCPU : ordercpu,
     OrderGPU: ordergpu,
-    OrderRAM: orderram
+    OrderRAM: orderram,
+    OrderPCSET : orderpcset,
+    Buildpc:BuildingPC
   }, 
   {
     initialRouteName: "Login",

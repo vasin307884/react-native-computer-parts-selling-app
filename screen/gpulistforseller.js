@@ -21,7 +21,8 @@ export default class GPUList extends React.Component {
       var defaultdata = {
         gpuname : '',
         gpuprice : '',
-        desc : ''
+        desc : '',
+        review:''
       }
       let data = snapshot.val()
       if(data == null){
@@ -49,7 +50,7 @@ export default class GPUList extends React.Component {
   }
   
   callupdate(item) { 
-  this.props.navigation.navigate('UpdateGPU', { name: item.gpuname, price: item.gpuprice, desc: item.desc,itemx:item })
+  this.props.navigation.navigate('UpdateGPU', { name: item.gpuname, price: item.gpuprice,review:item.review, desc: item.desc,itemx:item })
 }
   
 

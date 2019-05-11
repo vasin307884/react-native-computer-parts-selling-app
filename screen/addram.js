@@ -14,7 +14,8 @@ export default class Addram extends React.Component {
         let myOrder = {
             ramname:this.state.rname,
             ramprice:this.state.rprice,
-            desc:this.state.rdesc
+            desc:this.state.rdesc,
+            review:this.state.review
 
         }
     
@@ -51,7 +52,9 @@ export default class Addram extends React.Component {
         <View style={stylex}>
         <TextInput style = {{fontSize:15,padding:20}} placeholder = 'Description' onChangeText = {(desc) => this.setState({rdesc:desc})}></TextInput>
         </View>
-        
+        <View style={stylex}>
+        <TextInput style = {{fontSize:15,padding:20}} placeholder = 'Video Review URL' onChangeText = {(review) => this.setState({review:review})}></TextInput>
+        </View>
         
         
         <View style={{alignItems:'center'}}>

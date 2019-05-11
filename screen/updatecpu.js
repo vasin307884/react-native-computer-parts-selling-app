@@ -9,9 +9,9 @@ export default class updatecpu extends React.Component {
     }
     constructor(props) {
         super(props)
-        const { name, price, desc} = this.props.navigation.state.params
+        const { name, price, desc,review} = this.props.navigation.state.params
         const item = this.props.navigation.state.params.itemx
-        this.state = { pname: name, pprice: price, pdesc: desc , item : item }
+        this.state = { pname: name, pprice: price, pdesc: desc , item : item,review:review }
         
     }
 
@@ -19,7 +19,8 @@ export default class updatecpu extends React.Component {
         var newData = {
             productname : this.state.pname,
             productprice : this.state.pprice,
-            desc : this.state.pdesc
+            desc : this.state.pdesc,
+            review : this.state.review
           }
         firebase.database().ref('productlist').orderByChild('productname').equalTo(item.productname).once('child_added',
             (snapshot) => {
@@ -51,6 +52,9 @@ export default class updatecpu extends React.Component {
         </View>
         <View style={stylex}>
         <TextInput style = {{fontSize:15,padding:20}} value ={this.state.pdesc} onChangeText = {(desc) => this.setState({pdesc:desc})}></TextInput>
+        </View>
+        <View style={stylex}>
+        <TextInput style = {{fontSize:15,padding:20}} value ={this.state.review} onChangeText = {(review) => this.setState({review:review})}></TextInput>
         </View>
         
         

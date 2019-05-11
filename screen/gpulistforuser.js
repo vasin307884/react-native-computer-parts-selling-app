@@ -22,6 +22,7 @@ export default class UserGPUList extends React.Component {
         gpuname : '',
         gpuprice : '',
         desc : '',
+        review:''
         
       }
       let data = snapshot.val()
@@ -37,21 +38,10 @@ export default class UserGPUList extends React.Component {
     
     )
 }
-  deleteuser(name) {
-    var ref = firebase.database().ref('gpulist')
-    ref.orderByChild('gpuname').equalTo(name).on('child_added', function (snapshot) { 
-       snapshot.ref.remove().then(function(){
-         alert(`${snapshot.key} has been deleted`)
-       }).catch(function(error){
-         console.log(error)
-       })
-    })
-    
-  }
   
 
 callupdate(item) { 
-    this.props.navigation.navigate('OrderGPU', { name: item.gpuname, price: item.gpuprice, desc: item.desc,itemx:item })
+    this.props.navigation.navigate('OrderGPU', { name: item.gpuname, price: item.gpuprice, desc: item.desc,itemx:item,review:item.review })
   }
 
   render() {

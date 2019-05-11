@@ -9,9 +9,9 @@ export default class updateram extends React.Component {
     }
     constructor(props) {
         super(props)
-        const { name, price, desc} = this.props.navigation.state.params
+        const { name, price, desc,review} = this.props.navigation.state.params
         const item = this.props.navigation.state.params.itemx
-        this.state = { rname: name, rprice: price, rdesc: desc , item : item }
+        this.state = { rname: name, rprice: price, rdesc: desc , item : item,review:review }
         
     }
 
@@ -19,7 +19,8 @@ export default class updateram extends React.Component {
         var newData = {
             ramname : this.state.rname,
             ramprice : this.state.rprice,
-            desc : this.state.rdesc
+            desc : this.state.rdesc,
+            review: this.state.review
           }
         firebase.database().ref('ramlist').orderByChild('ramname').equalTo(item.ramname).once('child_added',
             (snapshot) => {
@@ -52,7 +53,9 @@ export default class updateram extends React.Component {
         <View style={stylex}>
         <TextInput style = {{fontSize:15,padding:20}} value ={this.state.rdesc} onChangeText = {(desc) => this.setState({rdesc:desc})}></TextInput>
         </View>
-        
+        <View style={stylex}>
+        <TextInput style = {{fontSize:15,padding:20}} value ={this.state.review} onChangeText = {(review) => this.setState({review:review})}></TextInput>
+        </View>
         
         <View style={{alignItems:'center'}}>
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton,]} 

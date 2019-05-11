@@ -3,15 +3,15 @@ import { Text,View,ScrollView,Button,TextInput,TouchableHighlight,StyleSheet,Lin
 import firebase from 'firebase';
 import { FlatList } from 'react-native-gesture-handler';
 
-export default class orderram extends React.Component {
+export default class orderpcset extends React.Component {
     static navigationOptions = {
-        title: 'Order RAM',
+        title: 'Order PC SET',
 
     }
     constructor(props) {
         super(props)
-        const { name, price,review} = this.props.navigation.state.params
-        this.state = { rname: name, rprice: price,review:review}
+        const { pcsetname, price} = this.props.navigation.state.params
+        this.state = { pcsetname: pcsetname, price: price}
         
     }
     submitOrder = async () => {
@@ -19,14 +19,14 @@ export default class orderram extends React.Component {
             username:this.state.uname,
             useraddress:this.state.uaddress,
             userphonenum:this.state.uphonenum,
-            ramname : this.state.rname,
-            ramprice : this.state.rprice
+            pcsetname : this.state.pcsetname,
+            price : this.state.price
 
         }
     
-        alert(`Thank you ${this.state.uname} for buying ${this.state.rname} price : ${this.state.rprice}`);
+        alert(`Thank you Mr.${this.state.uname} for buying ${this.state.pcsetname} price : ${this.state.price}`);
         this.props.navigation.navigate('MainUser')
-        fetch('https://reactproject-ab869.firebaseio.com/ramorder.json', {
+        fetch('https://reactproject-ab869.firebaseio.com/PC_SET_order.json', {
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -48,10 +48,10 @@ export default class orderram extends React.Component {
         <Text style = {{fontSize:20,fontWeight:'bold'}}>Order Page </Text>
         
         <View style={stylex}>
-        <TextInput style = {{fontSize:15,padding:20}}  value={this.state.rname} editable={false}></TextInput>
+        <TextInput style = {{fontSize:15,padding:20}}  value={this.state.pcsetname} editable={false}></TextInput>
         </View>
         <View style={stylex}>
-        <TextInput style = {{fontSize:15,padding:20}}  value={this.state.rprice} editable={false}></TextInput>
+        <TextInput style = {{fontSize:15,padding:20}}  value={this.state.price} editable={false}></TextInput>
         </View>
         <View style={stylex}>
         <TextInput style = {{fontSize:15,padding:20}} placeholder = 'Name' onChangeText = {(name) => this.setState({uname:name})} ></TextInput>
@@ -70,9 +70,6 @@ export default class orderram extends React.Component {
           <Text style={{fontSize:15,fontWeight:'bold',textAlign:'center'}}>Order this product</Text>
         </TouchableHighlight> 
         </View>
-        </View>
-        <View>
-        <Button title='Watch review here' onPress={() => {Linking.openURL(this.state.review)}} />
         </View>
         </ScrollView>
         )
