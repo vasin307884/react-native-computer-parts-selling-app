@@ -31,6 +31,11 @@ import UserPCSETList from './screen/pcsetlistforuser';
 import orderpcset from './screen/pcsetorder';
 import Register from './screen/register';
 import LoginSeller from './screen/loginforseller';
+import MainMenuGuestScreen from './screen/mainmenuforguest';
+import GuestProductList from './screen/cpulistforguest';
+import GuestGPUList from './screen/gpulistforguest';
+import GuestRAMList from './screen/ramlistforguest';
+import GuestPCSETList from './screen/pcsetlistforguest';
 
 const Productupdate = createStackNavigator({
   PList:{screen:ProductList},
@@ -84,6 +89,7 @@ const AppNavigator = createStackNavigator(
     Details: DetailsScreen,
     Main: MainMenuScreen,
     MainUser : MainMenuUserScreen,
+    MainGuest : MainMenuGuestScreen,
     OrderForm: OrderFormScreen,
     QRcode: QRcodeScreen,
     Register : Register,
@@ -100,6 +106,10 @@ const AppNavigator = createStackNavigator(
     Usergpulist:UserGPUList,
     Userramlist:UserRAMList,
     Userpcsetlist:UserPCSETList,
+    Guestpcsetlist:GuestPCSETList,
+    Guestcpulist:GuestProductList,
+    Guestgpulist:GuestGPUList,
+    Guestramlist:GuestRAMList,
     UpdateCPU: updatecpu,
     UpdateGPU: updategpu,
     UpdateRam : updateram,
