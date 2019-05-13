@@ -94,7 +94,7 @@ static navigationOptions = {
         <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('LoginSeller')}>
             <Text style={{fontWeight:'bold'}}>For Seller</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('MainUser')}>
+        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('MainGuest')}>
             <Text style={{fontWeight:'bold'}}>Guest</Text>
         </TouchableHighlight>
         {/*}
