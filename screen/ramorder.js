@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,View,ScrollView,Button,TextInput,TouchableHighlight,StyleSheet,Linking } from 'react-native';
+import { Text,View,ScrollView,Button,TextInput,TouchableHighlight,StyleSheet,Linking ,WebView} from 'react-native';
 import firebase from 'firebase';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -71,9 +71,7 @@ export default class orderram extends React.Component {
         </TouchableHighlight> 
         </View>
         </View>
-        <View>
-        <Button title='Watch review here' onPress={() => {Linking.openURL(this.state.review)}} />
-        </View>
+
         </ScrollView>
         )
     }

@@ -29,6 +29,8 @@ import PCsetlist from './screen/pcsetlistforseller';
 import updatepcset from './screen/updatepcset';
 import UserPCSETList from './screen/pcsetlistforuser';
 import orderpcset from './screen/pcsetorder';
+import Register from './screen/register';
+import LoginSeller from './screen/loginforseller';
 
 const Productupdate = createStackNavigator({
   PList:{screen:ProductList},
@@ -56,6 +58,7 @@ const ProductStackTab = createBottomTabNavigator({
 })
 const Loginnavigator = createStackNavigator({
   Login : {screen : LoginScreen},
+  LoginSeller:{screen:LoginSeller},
   Add : {screen : Addproduct},
   Addg : {screen : Addgpu},
   Addr : {screen : Addram},
@@ -63,7 +66,8 @@ const Loginnavigator = createStackNavigator({
 })
 
 const LandingNavigator= createSwitchNavigator({
-  LoginForm :{screen : LoginScreen},
+  Login :{screen : LoginScreen},
+  LoginSeller:{screen: LoginSeller},
   PList : {screen : ProductStackTab},
   GList : {screen : ProductStackTab},
   RList : {screen : ProductStackTab},
@@ -71,6 +75,7 @@ const LandingNavigator= createSwitchNavigator({
   Usergpulist:{screen:UserGPUList},
   Userramlist:{screen:UserRAMList},
   Login : {screen : Loginnavigator},
+  Login : {screen: Loginnavigator},
   initialRouteName: 'LoginForm'
   
 })
@@ -81,7 +86,9 @@ const AppNavigator = createStackNavigator(
     MainUser : MainMenuUserScreen,
     OrderForm: OrderFormScreen,
     QRcode: QRcodeScreen,
+    Register : Register,
     Login: LoginScreen,
+    LoginSeller : LoginSeller,
     Add: Addproduct,
     Addg: Addgpu,
     Addr: Addram,

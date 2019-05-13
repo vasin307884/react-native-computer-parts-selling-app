@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import firebase from 'firebase';
 
-export default class LoginScreen extends Component {
+export default class Register extends Component {
 
   constructor(props){
     super(props)
@@ -19,33 +19,23 @@ export default class LoginScreen extends Component {
 }
 
 static navigationOptions = {
-    title: 'Authentication',
+    title: 'Register',
   }
   onButtonPress() {
-    this.setState({ error: '', loading: true })
-    const { email, password } = this.state;
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch((error) => {
+    const {email , password} = this.state
+        this.setState({loading:true})
+       firebase.auth().createUserWithEmailAndPassword(email,password).then(()=>this.props.navigation.goBack())
+       .catch((error)=>{
+        let errorCode = error.code
+        let errorMessage = error.message;
+        if (errorCode == 'auth/weak-password') {
+          this.onLoginFailure.bind(this)('Weak password!')
+        } else {
+          this.onLoginFailure.bind(this)(errorMessage)
+        }
         
-            let errorCode = error.code
-            let errorMessage = error.message;
-            if (errorCode == 'auth/weak-password') {
-              this.onLoginFailure.bind(this)('Weak password!')
-            } else {
-              this.onLoginFailure.bind(this)(errorMessage)
-            }
-          });
-      
-  }
-  onLoginSuccess() {
-    this.props.navigation.navigate('MainUser',{emailx : this.state.email})
-    this.setState({
-      email: '', password: '', error: '', loading: false
-      
-    })
-  }
-
+       })
+    }
   onLoginFailure(errorMessage) {
     this.setState({ error: errorMessage, loading: false })
   }
@@ -59,7 +49,7 @@ static navigationOptions = {
     }
     return (
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.onButtonPress.bind(this)}>
-          <Text style={styles.loginText}>Login</Text>
+          <Text style={styles.loginText}>Register</Text>
         </TouchableHighlight>
     );
   }
@@ -88,15 +78,6 @@ static navigationOptions = {
         </View>
 
         {this.renderButton()}
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={()=> this.props.navigation.navigate('Register')}>
-          <Text style={styles.loginText}>Register</Text>
-        </TouchableHighlight>
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('LoginSeller')}>
-            <Text style={{fontWeight:'bold'}}>For Seller</Text>
-        </TouchableHighlight>
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('MainUser')}>
-            <Text style={{fontWeight:'bold'}}>Guest</Text>
-        </TouchableHighlight>
         {/*}
         <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('MainUser')}>
             <Text style={{fontWeight:'bold'}}>go to main</Text>

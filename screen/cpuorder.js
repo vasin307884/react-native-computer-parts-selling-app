@@ -72,7 +72,11 @@ export default class ordercpu extends React.Component {
         </View>
         </View>
         <View>
-        <Button title='Watch review here' onPress={() => {Linking.openURL(this.state.review)}} />
+          <Text style={{textAlign:'center',fontSize:20,fontWeight:'bold',marginBottom:5}}>Review video</Text>
+        <WebView 
+        source={{uri:this.state.review}}
+        style={{height:200}}
+        />
         </View>
         </ScrollView>
         )
